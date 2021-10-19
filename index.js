@@ -1,5 +1,5 @@
 const axios = require('axios')
-var request = require('request');
+//var request = require('request');
 
 
 function analiz()
