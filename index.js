@@ -11,7 +11,7 @@ function analiz()
         }
         else if(res == undefined)
         {
-            console.log("error connect ++"+res.statusCode === 200);
+            console.log("error connect ++"+err);
         }
         else
         {
