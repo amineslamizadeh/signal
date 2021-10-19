@@ -1,31 +1,19 @@
-const https = require('https')
+const axios = require('axios')
 
-const data = new TextEncoder().encode(
-    JSON.stringify({
-        noee: '~@Tedi1377./'
-    })
-)
 
-const options = {
-    hostname: 'bidex.pw',
-    port: 80,
-    path: '/appSignal/ajax/n_signal.php',
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
-    }
+function analiz()
+{
+    axios
+        .get('https://bidex.pw/appSignal/ajax/n_signals.php?noee=~@Tedi1377./')
+        .then(res => {
+            data=res.data;
+            console.log("asd");
+
+        })
+        .catch(error => {
+            console.error(error)
+        })
 }
 
-const req = https.request(options, res => {
-    //console.log(`statusCode: ${res.statusCode}`)
-    res.on('data', d => {
-        console.log(d);
-    })
-})
-
-req.on('error', error => {
-    console.error(error)
-})
-
-req.end()
+analiz();
+setInterval(analiz,30000);
