@@ -1,18 +1,23 @@
-const axios = require('axios')
-//var request = require('request');
+var request = require('request');
 
 
 function analiz()
 {
-    axios
-        .get('https://bidex.pw/appSignal/ajax/n_signals.php?noee=~@Tedi1377./')
-        .then(res => {
-            data=res.data;
-            console.error(data);
-        })
-        .catch(error => {
-            console.error(error);
-        })
+    request.get("https://bidex.pw/appSignal/ajax/n_signals.php?noee=~@Tedi1377./", function (err, res, body) {
+        //console.log(res);
+        if ( res != undefined && res.statusCode === 200) {
+            console.log(body);
+            console.log("af");
+        }
+        else if(res == undefined)
+        {
+            console.log("error connect");
+        }
+        else
+        {
+            console.error('error:', err);
+        }
+    });
 }
 
 analiz();
