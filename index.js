@@ -1,32 +1,19 @@
-const querystring = require('querystring');
-const https = require('https');
+const axios = require('axios')
+var request = require('request');
 
-var postData = querystring.stringify({
-    'noee' : '~@Tedi1377./'
-});
 
-var options = {
-    hostname: 'https://bidex.pw',
-    port: 443,
-    path: '/appSignal/ajax/n_signals.php',
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': postData.length
-    }
-};
+function analiz()
+{
+    axios
+        .get('https://bidex.pw/appSignal/ajax/n_signals.php?noee=~@Tedi1377./')
+        .then(res => {
+            data=res.data;
+            console.error(data);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+}
 
-var req = https.request(options, (res) => {
-    console.log('statusCode:', res.statusCode);
-    console.log('headers:', res.headers);
-
-    res.on('data', (d) => {
-        console.log(d);
-    });
-});
-
-req.on('error', (e) => {
-    console.error(e);
-});
-
-req.end();
+analiz();
+setInterval(analiz,30000);
