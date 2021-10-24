@@ -10,7 +10,7 @@ function analiz()
         if(!error && response.statusCode == 200) {
             console.log(response.body);
         } else {
-            console.log(response.statusCode, {'error': 'error'})
+            console.log("errorrrr  ############################################################################################# errorrrr #############################################################")
         }
     });
 }
